@@ -1,11 +1,49 @@
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>My Shopping Mall</title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
 </head>
 <body>
-<h1><%= title %></h1>
-<p>Welcome to <%= title %></p>
+
+<header>
+    <div class="logo" onclick="location.href='/'">SHOPMALL</div>
+    <nav>
+        <ul>
+            <li><a href="/user/login">로그인</a></li>
+            <li><a href="/board">고객센터</a></li>
+            <li><a href="/notice">공지사항</a></li>
+            <li><a href="/products">상품 리스트</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main class="container">
+    <h1>환영합니다! My Shopping Mall에 오신 것을 환영합니다.</h1>
+
+    <section class="product-list">
+        <% products.forEach(product => { %>
+            <div class="product-card">
+                <img src="<%= product.image_url %>" alt="<%= product.name %>" />
+                <div class="info">
+                    <h3><%= product.name %></h3>
+                    <p><%= product.description %></p>
+                    <div class="price"><%= product.price.toLocaleString() %>원</div>
+                </div>
+            </div>
+        <% }) %>
+    </section>
+</main>
+
+<footer>
+    &copy; 2025 My Shopping Mall |
+    <a href="/about">회사소개</a> |
+    <a href="/terms">이용약관</a> |
+    <a href="/privacy">개인정보처리방침</a> <br/>
+    연락처: 010-4435-9485 | 이메일: knsuho990@gmail.com
+</footer>
+
 </body>
 </html>

@@ -1,4 +1,4 @@
-/* Reset & 기본 설정 */
+/* Reset 기본 스타일 */
 * {
   margin: 0;
   padding: 0;
@@ -7,141 +7,131 @@
 
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #f5f7fa;
+  background-color: #f8f9fa;
   color: #333;
-  padding: 20px;
   line-height: 1.6;
+  padding-top: 70px; /* 헤더 높이만큼 여유 */
 }
 
-/* 헤더 / 네비게이션 */
+/* 상단 네비게이션 바 */
 header {
-  background-color: #0077cc;
-  padding: 15px 30px;
-  color: white;
+  background-color: #343a40;
+  color: #fff;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 60px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding: 0 20px;
+  z-index: 1000;
 }
 
-header h1 {
+header .logo {
+  font-size: 1.5rem;
   font-weight: 700;
-  font-size: 24px;
+  letter-spacing: 1.5px;
+  cursor: pointer;
 }
 
-nav a {
-  color: white;
+header nav ul {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+}
+
+header nav ul li a {
+  color: #fff;
   text-decoration: none;
-  margin-left: 20px;
   font-weight: 600;
   transition: color 0.3s ease;
 }
 
-nav a:hover {
-  color: #ffbb33;
+header nav ul li a:hover {
+  color: #00b7ff;
 }
 
-/* 메인 컨테이너 */
-.container {
+/* 메인 컨텐츠 영역 */
+main.container {
   max-width: 1200px;
   margin: 30px auto;
-  background: white;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 6px 15px rgb(0 0 0 / 0.1);
+  padding: 0 15px;
 }
 
-/* 상품 리스트 */
+/* 상품 리스트 스타일 */
 .product-list {
   display: grid;
-  grid-template-columns: repeat(auto-fill,minmax(220px,1fr));
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   gap: 25px;
-  margin-top: 20px;
 }
 
-.product-item {
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  overflow: hidden;
+.product-card {
   background-color: #fff;
-  transition: box-shadow 0.3s ease;
-}
-
-.product-item:hover {
-  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
-}
-
-.product-img {
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
-  display: block;
-}
-
-.product-info {
-  padding: 15px;
-}
-
-.product-title {
-  font-size: 18px;
-  font-weight: 600;
-  margin-bottom: 8px;
-  color: #0077cc;
-}
-
-.product-price {
-  font-size: 16px;
-  font-weight: 700;
-  color: #ff6600;
-}
-
-/* 버튼 스타일 */
-.btn {
-  display: inline-block;
-  background-color: #0077cc;
-  color: white;
-  padding: 10px 20px;
-  border-radius: 4px;
-  text-decoration: none;
-  font-weight: 600;
-  transition: background-color 0.3s ease;
-  border: none;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease;
   cursor: pointer;
 }
 
-.btn:hover {
-  background-color: #005fa3;
+.product-card:hover {
+  transform: translateY(-5px);
 }
 
-/* 폼 스타일 */
-input[type="text"],
-input[type="password"],
-textarea {
+.product-card img {
   width: 100%;
-  padding: 10px 12px;
-  margin-bottom: 15px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 15px;
-  transition: border-color 0.3s ease;
+  height: 160px;
+  object-fit: cover;
 }
 
-input[type="text"]:focus,
-input[type="password"]:focus,
-textarea:focus {
-  border-color: #0077cc;
-  outline: none;
+.product-card .info {
+  padding: 15px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
-/* 반응형 */
-@media (max-width: 600px) {
-  header {
-    flex-direction: column;
-    text-align: center;
-  }
-  nav a {
-    margin: 10px 10px 0 0;
-  }
-  .product-list {
-    grid-template-columns: 1fr;
-  }
+.product-card .info h3 {
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+  color: #222;
+}
+
+.product-card .info p {
+  flex-grow: 1;
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 12px;
+}
+
+.product-card .info .price {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #00b7ff;
+}
+
+/* 푸터 */
+footer {
+  background-color: #343a40;
+  color: #bbb;
+  padding: 30px 20px;
+  text-align: center;
+  margin-top: 60px;
+  font-size: 0.9rem;
+  letter-spacing: 0.03em;
+}
+
+footer a {
+  color: #00b7ff;
+  text-decoration: none;
+  margin: 0 8px;
+}
+
+footer a:hover {
+  text-decoration: underline;
 }
