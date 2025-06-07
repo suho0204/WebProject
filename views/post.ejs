@@ -1,12 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
 <head>
     <meta charset="UTF-8" />
-    <title>페이지 제목</title>
-    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <title><%= post ? '글 수정' : (parentId ? '답글 작성' : '새 글 작성') %></title>
+    <link rel="stylesheet" href="/stylesheets/board.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet" />
 </head>
-<h2><%= post ? '글 수정' : (parentId ? '답글 작성' : '새 글 작성') %></h2>
-<form action="<%= post ? '/board/edit/' + post.id : '/board/new' %>" method="post">
-    <input type="hidden" name="parent_id" value="<%= post ? post.parent_id : parentId %>">
-    <input type="text" name="title" placeholder="제목" value="<%= post?.title || '' %>" required><br>
-    <textarea name="content" placeholder="내용"><%= post?.content || '' %></textarea><br>
-    <button type="submit">저장</button>
-</form>
+<body>
+<div class="board-container">
+    <h2><%= post ? '글 수정' : (parentId ? '답글 작성' : '새 글 작성') %></h2>
+    <form action="<%= post ? '/board/edit/' + post.id : '/board/new' %>" method="post" class="board-form">
+        <input type="hidden" name="parent_id" value="<%= post ? post.parent_id : parentId || '' %>" />
+
+        <label for="title" class="form-label">제목</label>
+        <input
+                id="title"
+                type="text"
+                name="title"
+                placeholder="제목을 입력하세요"
+                value="<%= post?.title || '' %>"
+                required
+                autocomplete="off"
+        />
+
+        <label for="content" class="form-label">내용</label>
+        <textarea
+                id="content"
+                name="content"
+                placeholder="내용을 입력하세요"
+                required
+        ><%= post?.content || '' %></textarea>
+
+        <button type="submit" class="submit-btn">저장</button>
+    </form>
+</div>
+</body>
+</html>

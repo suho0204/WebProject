@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>마이페이지 - My Shopping Mall</title>
+    <link rel="stylesheet" href="/stylesheets/mypage.css" />
+    <script>
+        function openTab(evt, tabName) {
+            const contents = document.querySelectorAll('.content-section');
+            contents.forEach(c => c.style.display = 'none');
+
+            const tabs = document.querySelectorAll('.tab');
+            tabs.forEach(t => t.classList.remove('active'));
+
+            document.getElementById(tabName).style.display = 'block';
+            evt.currentTarget.classList.add('active');
+        }
+
+        window.onload = function() {
+            // 기본적으로 첫 번째 탭 열기
+            document.querySelector('.tab').click();
+        }
+    </script>
+</head>
+<body>
+<header>
+    <div class="logo" onclick="location.href='/'" style="cursor:pointer; font-weight:bold; font-size:1.8rem; padding: 20px;">SHOPMALL</div>
+    <nav>
+        <ul>
+            <li><a href="/">홈</a></li>
+            <li><a href="/user/logout">로그아웃</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main class="container">
+    <h1>마이페이지</h1>
+
+    <div class="profile-info">
+        <h2>회원 정보</h2>
+        <p><strong>이름:</strong> <%= user.name %></p>
+    </div>
+
+    <div class="tabs">
+        <div class="tab" onclick="openTab(event, 'wishlist')">위시리스트</div>
+        <div class="tab" onclick="openTab(event, 'orders')">주문 내역</div>
+    </div>
+
+    <div id="wishlist" class="content-section" style="display:none;">
+        <h2>위시리스트</h2>
+        <p><a href="/mypage/wishlist" class="btn-wishlist-link">내 위시리스트 바로가기</a></p>
+    </div>
+
+    <div id="orders" class="content-section" style="display:none;">
+        <h2>주문 내역</h2>
+        <p>주문 내역 기능은 준비 중입니다.</p>
+    </div>
+
+</main>
+
+<footer>
+    &copy; 2025 My Shopping Mall
+</footer>
+</body>
+</html>

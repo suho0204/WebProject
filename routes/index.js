@@ -13,7 +13,7 @@ router.get('/', function(req, res, next) {
       return res.send('상품 정보를 불러오는 데 실패했습니다.');
     }
     res.render('index', {
-      user: req.session.user,
+      user: req.session.user || null,
       products: products
     });
   });

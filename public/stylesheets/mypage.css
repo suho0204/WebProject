@@ -1,0 +1,138 @@
+/* ========== 상단 네비게이션 바 ========== */
+header {
+    background-color: #343a40;
+    color: #fff;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    z-index: 1000;
+}
+
+header .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+header nav ul {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+    margin: 0;
+    padding: 0;
+}
+
+header nav ul li {
+    display: flex;
+    align-items: center;
+}
+
+header nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+header nav ul li a:hover {
+    color: #00b7ff;
+}
+
+/* ========== 본문 콘텐츠 상단 여백 ========== */
+main {
+    padding-top: 80px; /* header 높이 + 여유 */
+}
+
+/* ========== 탭 영역 ========== */
+.tabs {
+    display: flex;
+    border-bottom: 2px solid #2980b9;
+    margin-bottom: 20px;
+}
+
+.tab {
+    padding: 10px 20px;
+    cursor: pointer;
+    border: 1px solid transparent;
+    border-bottom: none;
+    font-weight: 600;
+    color: #2980b9;
+    margin-right: 10px;
+    border-radius: 5px 5px 0 0;
+    background-color: #f1faff;
+}
+
+.tab.active {
+    background-color: #2980b9;
+    color: white;
+    border-color: #2980b9;
+    font-weight: 700;
+}
+
+/* ========== 콘텐츠 영역 ========== */
+.content-section {
+    padding: 20px;
+    border: 1px solid #2980b9;
+    border-radius: 0 5px 5px 5px;
+    background-color: white;
+}
+
+.profile-info {
+    margin-bottom: 30px;
+}
+
+.profile-info h2 {
+    margin-bottom: 10px;
+    color: #2980b9;
+}
+
+.profile-info p {
+    font-size: 1.1rem;
+    margin: 5px 0;
+}
+
+/* ========== 버튼 ========== */
+.btn-wishlist-link {
+    display: inline-block;
+    margin-top: 15px;
+    background-color: #2980b9;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.3s;
+}
+
+.btn-wishlist-link:hover {
+    background-color: #1c5980;
+}
+
+/* ========== 푸터 ========== */
+footer {
+    background-color: #343a40;
+    color: #bbb;
+    padding: 30px 20px;
+    text-align: center;
+    margin-top: 60px;
+    font-size: 0.9rem;
+    letter-spacing: 0.03em;
+}
+
+footer a {
+    color: #00b7ff;
+    text-decoration: none;
+    margin: 0 8px;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}

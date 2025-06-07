@@ -1,11 +1,19 @@
 <head>
     <meta charset="UTF-8" />
-    <title>페이지 제목</title>
-    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <title>로그인</title>
+    <link rel="stylesheet" href="/stylesheets/login.css" />
 </head>
-<h2>로그인</h2>
-<form action="/user/login" method="post">
-    <input type="text" name="username" placeholder="아이디" required><br>
-    <input type="password" name="password" placeholder="비밀번호" required><br>
-    <button type="submit">로그인</button>
-</form>
+<body>
+<div class="auth-container">
+    <h2>로그인</h2>
+    <form action="/user/login" method="post" class="auth-form">
+        <input type="text" name="username" placeholder="아이디" required><br>
+        <input type="password" name="password" placeholder="비밀번호" required><br>
+        <button type="submit">로그인</button>
+    </form>
+    <div class="link-area">
+        <p>아직 회원이 아니신가요?</p>
+        <a href="/user/register" class="auth-link">회원가입</a>
+    </div>
+</div>
+</body>

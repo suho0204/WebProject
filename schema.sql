@@ -6,7 +6,7 @@ CREATE TABLE IF NOT EXISTS users (
     name TEXT NOT NULL
 );
 
--- 게이글 테이블 (공지사항 + 문의글 통합)
+-- 게시글 테이블 (문의글 통합)
 CREATE TABLE IF NOT EXISTS posts(
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     title TEXT NOT NULL,
@@ -15,6 +15,14 @@ CREATE TABLE IF NOT EXISTS posts(
     author TEXT,
     creater_at DATETIME DEFAULT CURRENT_TIMESTAMP
 );
+-- 공지사항 테이블
+CREATE TABLE IF NOT EXISTS notices (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    title TEXT NOT NULL,
+    content TEXT NOT NULL,
+    created_at TEXT NOT NULL
+);
+
 
 -- 파일 업로드 정보 테이블 (공지사항 첨부 파일용)
 CREATE TABLE IF NOT EXISTS files(
@@ -95,6 +103,15 @@ CREATE TABLE IF NOT EXISTS reviews (
                                        FOREIGN KEY (user_id) REFERENCES users(id),
                                        FOREIGN KEY (product_id) REFERENCES products(id)
 );
+CREATE TABLE IF NOT EXISTS wishlist (
+                                        id INTEGER PRIMARY KEY AUTOINCREMENT,
+                                        user_id INTEGER NOT NULL,
+                                        product_id INTEGER NOT NULL,
+                                        added_at TEXT DEFAULT (datetime('now')),
+                                        UNIQUE(user_id, product_id),
+                                        FOREIGN KEY(user_id) REFERENCES users(id),
+                                        FOREIGN KEY(product_id) REFERENCES products(id)
+);
 
 INSERT INTO products (name, description, price, stock, image_url) VALUES
 -- 전자제품
@@ -126,3 +143,5 @@ INSERT INTO products (name, description, price, stock, image_url) VALUES
 ('탐앤탐스 텀블러', '스테인리스 보온 텀블러 500ml', 15900, 70, 'toms_tumbler.jpg'),
 ('제닉스 아레나 데스크', '게이밍 전용 책상', 159000, 5, 'xenics_desk.jpg'),
 ('무드등 캔들 워머', '분위기 있는 인테리어 조명', 24900, 35, 'candle_warmer.jpg');
+
+INSERT INTO notices (title, content, created_at) VALUES ('서버 점검 안내', '내일 오전 2시부터 4시까지 서버 점검이 있습니다.', datetime('now'));

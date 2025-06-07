@@ -1,0 +1,86 @@
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+    background-color: #fafafa;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+.container {
+    max-width: 1000px;
+    margin: 40px auto;
+    background: #fff;
+    padding: 30px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    border-radius: 10px;
+}
+.product-detail {
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+.product-image {
+    flex: 1 1 400px;
+    max-width: 400px;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+}
+.product-image img {
+    width: 100%;
+    border-radius: 12px;
+    object-fit: cover;
+}
+.product-info {
+    flex: 1 1 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.product-info h1 {
+    font-size: 2.4rem;
+    margin-bottom: 15px;
+    color: #222;
+}
+.product-info p.description {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 25px;
+    color: #555;
+}
+.product-info .price {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #e74c3c;
+    margin-bottom: 30px;
+}
+.buy-button {
+    padding: 15px 30px;
+    background-color: #27ae60;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: fit-content;
+}
+.buy-button:hover {
+    background-color: #219150;
+}
+
+/* 반응형 */
+@media (max-width: 768px) {
+    .product-detail {
+        flex-direction: column;
+        align-items: center;
+    }
+    .product-image, .product-info {
+        max-width: 100%;
+        flex: none;
+    }
+    .product-info h1 {
+        font-size: 2rem;
+    }
+    .product-info .price {
+        font-size: 1.6rem;
+    }
+}

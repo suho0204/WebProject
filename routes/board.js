@@ -1,11 +1,12 @@
 const express = require('express');
 const sqlite3 = require('sqlite3').verbose();
 const path = require('path');
+const isAuthenticated = require('../middlewares/auth');
 
 const router = express.Router();
 const dbPath = path.join(__dirname, '../db/database.sqlite');
 const db = new sqlite3.Database(dbPath);
-
+router.use(isAuthenticated);
 // 게시글 목록
 router.get('/', (req, res) => {
     db.all(`
