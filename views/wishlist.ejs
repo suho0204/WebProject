@@ -24,7 +24,7 @@
         <ul class="wishlist-list">
             <% products.forEach(product => { %>
                 <li class="wishlist-item">
-                    <img src="<%= product.image_url %>" alt="<%= product.name %>" />
+                    <img src="/images/<%= product.image_url %>" alt="<%= product.name %>" />
                     <div class="info">
                         <h3><%= product.name %></h3>
                         <p><%= product.description %></p>
