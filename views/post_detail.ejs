@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8" />
+    <title><%= post.title %> - 글 상세보기</title>
+    <link rel="stylesheet" href="/stylesheets/board.css" />
+</head>
+<body>
+<h2><%= post.title %></h2>
+<p>작성자: <%= post.author %></p>
+<p><%= post.content.replace(/\n/g, '<br>') %></p>
+
+<hr>
+
+<h3>답글 목록</h3>
+<% if (replies.length === 0) { %>
+    <p>답글이 없습니다.</p>
+<% } else { %>
+    <ul>
+        <% replies.forEach(reply => { %>
+            <li>
+                <strong><%= reply.author %></strong> - <%= reply.title %><br />
+                <p><%= reply.content.replace(/\n/g, '<br>') %></p>
+            </li>
+        <% }) %>
+    </ul>
+<% } %>
+
+<hr>
+<a href="/board/reply/<%= post.id %>">답글 작성하기</a> | <a href="/board">목록으로</a>
+</body>
+</html>

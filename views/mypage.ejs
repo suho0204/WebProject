@@ -24,16 +24,7 @@
     </script>
 </head>
 <body>
-<header>
-    <div class="logo" onclick="location.href='/'" style="cursor:pointer; font-weight:bold; font-size:1.8rem; padding: 20px;">SHOPMALL</div>
-    <nav>
-        <ul>
-            <li><a href="/">홈</a></li>
-            <li><a href="/user/logout">로그아웃</a></li>
-        </ul>
-    </nav>
-</header>
-
+<%- include('header') %>
 <main class="container">
     <h1>마이페이지</h1>
 
@@ -58,9 +49,6 @@
     </div>
 
 </main>
-
-<footer>
-    &copy; 2025 My Shopping Mall
-</footer>
+<%- include('footer') %>
 </body>
 </html>

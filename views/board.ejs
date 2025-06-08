@@ -1,18 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko">
 <head>
     <meta charset="UTF-8" />
-    <title>페이지 제목</title>
+    <title>고객센터 게시판</title>
     <link rel="stylesheet" href="/stylesheets/board.css" />
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
+<body>
+<%- include('header') %>
 <h2>고객센터 게시판</h2>
-<a href="/board/new">[글쓰기]</a>
-<ul>
+<a href="/board/new" class="button-write">글쓰기</a>
+
+<ul class="post-list">
     <% posts.forEach(post => { %>
-        <li style="margin-left:<%= post.parent_id ? '30px' : '0' %>">
-            <a href="/board/view/<%= post.id %>">
-                <%= post ? '글 수정' : (post.parent_id ? '[답글]' : '') %> <%= post.title %> - <%= post.author %>
-            </a>
-            (<a href="/board/edit/<%= post.id %>">수정</a> / <a href="/board/delete/<%= post.id %>">삭제</a>)
+        <li>
+            <a href="/board/view/<%= post.id %>" class="post-title"><%= post.title %> - <%= post.author %></a>
+            <div class="post-meta">
+                <a href="/board/edit/<%= post.id %>">수정</a> /
+                <a href="/board/delete/<%= post.id %>">삭제</a>
+            </div>
         </li>
     <% }) %>
 </ul>
+
+<%- include('footer') %>
+</body>
+</html>

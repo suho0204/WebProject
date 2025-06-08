@@ -7,18 +7,7 @@
     <link rel="stylesheet" href="/stylesheets/notice.css" />
 </head>
 <body>
-<header>
-    <div class="logo" onclick="location.href='/'" style="cursor:pointer; font-weight:bold; font-size:1.8rem; padding: 20px;">SHOPMALL</div>
-    <nav>
-        <ul>
-            <li><a href="/">홈</a></li>
-            <li><a href="/board">고객센터</a></li>
-            <li><a href="/notice">공지사항</a></li>
-            <li><a href="/products">상품 리스트</a></li>
-        </ul>
-    </nav>
-</header>
-
+<%- include('header') %>
 <main class="container">
     <h2>공지사항</h2>
     <ul class="notice-list">
@@ -30,13 +19,6 @@
         <% }) %>
     </ul>
 </main>
-
-<footer>
-    &copy; 2025 My Shopping Mall |
-    <a href="/about">회사소개</a> |
-    <a href="/terms">이용약관</a> |
-    <a href="/privacy">개인정보처리방침</a><br/>
-    연락처: 010-4435-9485 | 이메일: knsuho990@gmail.com
-</footer>
+<%- include('footer') %>
 </body>
 </html>

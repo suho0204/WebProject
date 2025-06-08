@@ -7,7 +7,7 @@ const path = require('path');
 const dbPath = path.join(__dirname, '../db/database.sqlite');
 const db = new sqlite3.Database(dbPath);
 
-// 로그인 확인 미들웨어 (필요시 분리해서 사용)
+// 로그인 확인 미들웨어
 function isAuthenticated(req, res, next) {
     if (req.session && req.session.user) {
         return next();
@@ -19,7 +19,6 @@ function isAuthenticated(req, res, next) {
 router.get('/', isAuthenticated, (req, res) => {
     const userId = req.session.user.id;
 
-    // 1) 사용자 정보 조회
     db.get('SELECT id, name FROM users WHERE id = ?', [userId], (err, user) => {
         if (err) {
             console.error(err);
@@ -29,35 +28,50 @@ router.get('/', isAuthenticated, (req, res) => {
             return res.status(404).send('사용자를 찾을 수 없습니다.');
         }
 
-        // 2) 위시리스트 상품 조회 (예: user_wishlist 테이블에 user_id, product_id 컬럼이 있다고 가정)
+        // 위시리스트 일부 항목 미리 조회 (미리보기용)
         const sql = `
-      SELECT p.id, p.name, p.price, p.image_url
-      FROM products p
-      JOIN wishlist uw ON p.id = uw.product_id
-      WHERE uw.user_id = ?
-    `;
-
+            SELECT p.id, p.name, p.price, p.image_url
+            FROM products p
+            JOIN wishlist w ON p.id = w.product_id
+            WHERE w.user_id = ?
+        `;
         db.all(sql, [userId], (err, wishlist) => {
             if (err) {
                 console.error(err);
                 return res.status(500).send('위시리스트 정보를 불러오는 중 오류가 발생했습니다.');
             }
 
-            // 페이지 렌더링
-            res.render('mypage', {
-                user,
-                wishlist
-            });
+            res.render('mypage', { user, wishlist });
         });
     });
 });
 
-// 위시리스트에 상품 추가 (POST)
+// 위시리스트 전용 페이지
+router.get('/wishlist', isAuthenticated, (req, res) => {
+    const userId = req.session.user.id;
+
+    const sql = `
+        SELECT p.id, p.name, p.price, p.image_url, p.description
+        FROM products p
+        JOIN wishlist w ON p.id = w.product_id
+        WHERE w.user_id = ?
+    `;
+    db.all(sql, [userId], (err, products) => {
+        if (err) {
+            console.error(err);
+            return res.status(500).send('위시리스트를 불러오는 중 오류가 발생했습니다.');
+        }
+
+        res.render('wishlist', { products });
+    });
+});
+
+// 위시리스트에 상품 추가
 router.post('/wishlist/add', isAuthenticated, (req, res) => {
     const userId = req.session.user.id;
     const { productId } = req.body;
 
-    const insertSql = 'INSERT OR IGNORE INTO user_wishlist (user_id, product_id) VALUES (?, ?)';
+    const insertSql = 'INSERT OR IGNORE INTO wishlist (user_id, product_id) VALUES (?, ?)';
     db.run(insertSql, [userId, productId], (err) => {
         if (err) {
             console.error(err);
@@ -67,18 +81,18 @@ router.post('/wishlist/add', isAuthenticated, (req, res) => {
     });
 });
 
-// 위시리스트에서 상품 삭제 (POST)
+// 위시리스트에서 상품 삭제
 router.post('/wishlist/remove', isAuthenticated, (req, res) => {
     const userId = req.session.user.id;
     const { productId } = req.body;
 
-    const deleteSql = 'DELETE FROM user_wishlist WHERE user_id = ? AND product_id = ?';
+    const deleteSql = 'DELETE FROM wishlist WHERE user_id = ? AND product_id = ?';
     db.run(deleteSql, [userId, productId], (err) => {
         if (err) {
             console.error(err);
             return res.status(500).send('위시리스트 삭제 중 오류가 발생했습니다.');
         }
-        res.redirect('/mypage');
+        res.redirect('/mypage/wishlist');
     });
 });
 

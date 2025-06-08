@@ -61,14 +61,12 @@ CREATE TABLE IF NOT EXISTS product_images (
                                               FOREIGN KEY (product_id) REFERENCES products(id)
 );
 -- 장바구니 테이블
-CREATE TABLE IF NOT EXISTS cart_items (
-                                          id INTEGER PRIMARY KEY AUTOINCREMENT,
-                                          user_id INTEGER NOT NULL,
-                                          product_id INTEGER NOT NULL,
-                                          quantity INTEGER NOT NULL DEFAULT 1,
-                                          added_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-                                          FOREIGN KEY (user_id) REFERENCES users(id),
-                                          FOREIGN KEY (product_id) REFERENCES products(id)
+CREATE TABLE IF NOT EXISTS cart (
+                                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                                    user_id INTEGER NOT NULL,
+                                    product_id INTEGER NOT NULL,
+                                    quantity INTEGER NOT NULL DEFAULT 1,
+                                    UNIQUE(user_id, product_id)
 );
 
 -- 주문 테이블

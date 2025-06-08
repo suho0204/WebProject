@@ -1,23 +1,30 @@
-/* ========== 상단 네비게이션 바 ========== */
+/* mypage.css */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 상단 네비게이션 바 */
 header {
     background-color: #343a40;
     color: #fff;
     position: fixed;
     top: 0;
-    left: 0;
     width: 100%;
     height: 60px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 40px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    padding: 0 20px;
     z-index: 1000;
 }
 
 header .logo {
     font-size: 1.5rem;
-    font-weight: bold;
+    font-weight: 700;
+    letter-spacing: 1.5px;
     cursor: pointer;
 }
 
@@ -25,30 +32,41 @@ header nav ul {
     list-style: none;
     display: flex;
     gap: 25px;
-    margin: 0;
-    padding: 0;
-}
-
-header nav ul li {
-    display: flex;
-    align-items: center;
 }
 
 header nav ul li a {
     color: #fff;
     text-decoration: none;
     font-weight: 600;
-    font-size: 1rem;
     transition: color 0.3s ease;
 }
 
 header nav ul li a:hover {
     color: #00b7ff;
 }
-
-/* ========== 본문 콘텐츠 상단 여백 ========== */
-main {
-    padding-top: 80px; /* header 높이 + 여유 */
+main.container {
+    padding-top: 70px; /* header 높이 + 약간 여유 */
+}
+.logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+    margin: 0;
+    padding: 0;
+}
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+}
+nav ul li a:hover {
+    text-decoration: underline;
 }
 
 /* ========== 탭 영역 ========== */
@@ -57,7 +75,6 @@ main {
     border-bottom: 2px solid #2980b9;
     margin-bottom: 20px;
 }
-
 .tab {
     padding: 10px 20px;
     cursor: pointer;
@@ -69,7 +86,6 @@ main {
     border-radius: 5px 5px 0 0;
     background-color: #f1faff;
 }
-
 .tab.active {
     background-color: #2980b9;
     color: white;
@@ -84,16 +100,13 @@ main {
     border-radius: 0 5px 5px 5px;
     background-color: white;
 }
-
 .profile-info {
     margin-bottom: 30px;
 }
-
 .profile-info h2 {
     margin-bottom: 10px;
     color: #2980b9;
 }
-
 .profile-info p {
     font-size: 1.1rem;
     margin: 5px 0;
@@ -111,12 +124,11 @@ main {
     font-weight: 600;
     transition: background-color 0.3s;
 }
-
 .btn-wishlist-link:hover {
     background-color: #1c5980;
 }
 
-/* ========== 푸터 ========== */
+/* 푸터 */
 footer {
     background-color: #343a40;
     color: #bbb;

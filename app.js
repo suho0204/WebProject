@@ -11,6 +11,7 @@ const boardRouter = require('./routes/board');
 const productsRouter = require('./routes/products');
 const noticeRouter = require('./routes/notice');
 const mypageRouter = require('./routes/mypage');
+const cartRouter = require('./routes/cart');
 var app = express();
 
 // view engine setup
@@ -29,6 +30,13 @@ app.use(session({
     resave: false,
     saveUninitialized: true
 }));
+// 모든 뷰에서 user 변수를 사용할 수 있도록 미들웨어 추가
+app.use((req, res, next) => {
+    res.locals.user = req.session.user || null;
+    next();
+});
+
+app.use(express.urlencoded({ extended: true }));
 
 // 라우터 등록 (session 미들웨어 이후)
 app.use('/', indexRouter);
@@ -37,6 +45,7 @@ app.use('/board', boardRouter);
 app.use('/products', productsRouter);
 app.use('/notice', noticeRouter);
 app.use('/mypage', mypageRouter);
+app.use('/cart', cartRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

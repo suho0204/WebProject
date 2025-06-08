@@ -1,0 +1,257 @@
+/* cart.css */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/* 장바구니 제목 */
+h1 {
+    font-size: 2rem;
+    margin-bottom: 25px;
+    color: #222;
+    text-align: center;
+}
+
+/* 장바구니가 비었을 때 메시지 */
+.empty-message {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #666;
+    margin-top: 50px;
+}
+
+/* 장바구니 테이블 */
+.cart-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    overflow: hidden;
+}
+
+/* 테이블 헤더 */
+.cart-table thead th {
+    background-color: #00b7ff;
+    color: #fff;
+    padding: 15px;
+    font-weight: 700;
+    text-align: left;
+    letter-spacing: 0.03em;
+}
+
+/* 테이블 바디 */
+.cart-table tbody td {
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+    vertical-align: middle;
+    color: #333;
+}
+
+/* 상품 이미지 */
+.cart-table tbody td img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+/* 수량 입력 필드 */
+.quantity-input {
+    width: 60px;
+    padding: 5px 8px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    text-align: center;
+}
+
+/* 삭제 버튼 */
+.remove-btn {
+    background-color: #ff4d4f;
+    color: #fff;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.remove-btn:hover {
+    background-color: #d9363e;
+}
+
+/* 총 합계 영역 */
+.total-section {
+    margin-top: 25px;
+    text-align: right;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #00b7ff;
+}
+
+/* 주문하기 버튼 */
+.order-btn {
+    display: block;
+    margin: 30px auto 60px;
+    padding: 12px 35px;
+    background-color: #00b7ff;
+    color: #fff;
+    border: none;
+    border-radius: 30px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.order-btn:hover {
+    background-color: #008fcf;
+}
+
+/* 반응형: 작은 화면에서는 테이블 스크롤 */
+@media (max-width: 768px) {
+    .cart-table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+}
+header {
+    background-color: #343a40;
+    color: #fff;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 60px; /* 고정 높이 */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    display: flex;
+    align-items: center;  /* 수직 중앙 정렬 */
+    justify-content: space-between;
+    padding: 0 20px;
+    z-index: 1000;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    box-sizing: border-box;
+}
+
+header .logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    cursor: pointer;
+    line-height: 60px; /* header 높이에 맞춰 텍스트 중앙 정렬 */
+    user-select: none;
+}
+
+header nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    height: 60px; /* header 높이와 맞춤 */
+}
+
+header nav ul li {
+    font-weight: 600;
+    line-height: 60px; /* 높이에 맞게 */
+}
+
+header nav ul li strong {
+    color: #00b7ff;
+}
+
+header nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    line-height: 60px;
+    display: inline-block;
+    padding: 0 8px; /* 클릭 영역 확보 */
+}
+
+header nav ul li a:hover {
+    color: #00b7ff;
+}
+
+/* main 컨텐츠가 상단바 밑에서 시작하도록 여백 설정 */
+main.container {
+    padding-top: 70px; /* header 높이 + 약간 여유 */
+}
+
+/* 푸터 */
+footer {
+    background-color: #343a40;
+    color: #bbb;
+    padding: 30px 20px;
+    text-align: center;
+    margin-top: 60px;
+    font-size: 0.9rem;
+    letter-spacing: 0.03em;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+footer a {
+    color: #00b7ff;
+    text-decoration: none;
+    margin: 0 8px;
+    font-weight: 600;
+    transition: text-decoration 0.3s ease;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* 반응형: 네비게이션이 너무 길 경우 스크롤 가능 */
+@media (max-width: 600px) {
+    header nav ul {
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+    header nav ul li {
+        display: inline-block;
+        padding: 0 10px;
+    }
+}
+/* 모달 배경 */
+.modal {
+    display: none; /* 숨김 */
+    position: fixed;
+    z-index: 1500;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.5);
+}
+
+/* 모달 컨텐츠 박스 */
+.modal-content {
+    background-color: #fff;
+    margin: 15% auto;
+    padding: 20px 30px;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    position: relative;
+}
+
+/* 닫기 버튼 */
+.close {
+    color: #aaa;
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover {
+    color: #000;
+}

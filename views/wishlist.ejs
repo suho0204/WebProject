@@ -34,7 +34,8 @@
                                 <input type="hidden" name="productId" value="<%= product.id %>" />
                                 <button type="submit" class="btn-remove">삭제</button>
                             </form>
-                            <form action="/products/buy/<%= product.id %>" method="get" style="display:inline;">
+                            <form action="/cart/add" method="post" style="display:inline;">
+                                <input type="hidden" name="productId" value="<%= product.id %>" />
                                 <button type="submit" class="btn-buy">구매하기</button>
                             </form>
                         </div>
